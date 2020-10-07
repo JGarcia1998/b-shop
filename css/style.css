@@ -1,0 +1,251 @@
+@keyframes add-cart {
+  0% {
+    transform: translateY(0);
+    z-index: 1000;
+  }
+  50% {
+    transform: translateY(210%) scale(0.3);
+    opacity: 0.1;
+  }
+
+  51% {
+    transform: translateY(-5rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+
+  background-color: rgb(229, 235, 237);
+}
+
+.nav-container {
+  background-color: rgb(84, 233, 176);
+  width: 100vw;
+  height: 9rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-container__ul {
+  list-style-type: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.nav-container__items {
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: 0.3s all;
+}
+
+.nav-container__items:hover {
+  background-color: rgb(229, 235, 237);
+  border-radius: 3px;
+  color: rgb(0, 173, 104);
+
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.nav-container__items:active {
+  transform: translateY(0);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+}
+
+.base-layout {
+  padding: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.h1-bike {
+  text-transform: uppercase;
+  align-self: flex-start;
+  font-size: 4rem;
+}
+
+.filter-container {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 3rem;
+  display: flex;
+}
+
+.item-details {
+  font-size: 1.6rem;
+  margin-right: 2rem;
+  background-color: rgb(229, 235, 237);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.price-container {
+  background-color: black;
+  min-width: 30rem;
+  color: #fff;
+  margin-left: 2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 24px;
+  position: relative;
+}
+
+.price {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.3rem;
+}
+
+.main-item-grid {
+  display: grid;
+  margin-top: 3rem;
+  grid-column-gap: 4rem;
+  grid-row-gap: 4rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, 28rem);
+}
+.animation {
+  animation: add-cart;
+  animation-duration: 3s;
+}
+.grid-item {
+  background-color: #fff;
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.item-price {
+  font-size: 1.6rem;
+  letter-spacing: 1.5px;
+}
+
+.add-btn {
+  background-color: #fff;
+  border-radius: 100%;
+  width: 5rem;
+  text-align: center;
+  height: 5rem;
+  padding: 2rem;
+  border: 0.8rem solid rgb(229, 235, 237);
+  position: absolute;
+  bottom: -2.5rem;
+  right: -2.5rem;
+  cursor: pointer;
+  transition: 0.3s all;
+  outline: none;
+}
+
+.plus {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-46%, -45%);
+  font-size: 3rem;
+  color: rgb(84, 214, 162);
+}
+
+.add-btn:hover {
+  transform: scale(1.1, 1.1);
+  border: 0.8rem solid rgb(84, 233, 176);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.add-btn:active {
+  transform: translateY(0.1rem);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.img-container {
+  overflow: hidden;
+}
+
+.bike-image {
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 100%;
+  transition: 0.2s all;
+}
+
+.img-container:hover .bike-image {
+  animation: bike;
+  animation-duration: 1.3s;
+}
+
+@keyframes bike {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(110%);
+  }
+  51% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.footer-container {
+  min-width: 100vw;
+  height: 10rem;
+  background-color: rgb(250, 250, 250);
+  position: fixed;
+  bottom: 0;
+
+  animation: slide-up;
+  animation-duration: 1s;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
