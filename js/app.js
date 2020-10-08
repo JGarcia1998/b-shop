@@ -1,18 +1,18 @@
 let gridItems = document.querySelectorAll(".grid-item");
 let ul = document.querySelector(".footer-container");
-let toDelete = false;
+
 let num = 0;
-let uniqueId = 0;
+let cartItems = 0;
 
 gridItems.forEach((item) => {
   const button = item.querySelector(".add-btn");
   button.addEventListener("click", () => {
     ul.style.visibility = "visible";
     ul.style.opacity = "1";
+
     item.classList.add("animation");
     num += Number(item.querySelector(".item-price").getAttribute("value"));
     document.querySelector(".fixed-cart-price").innerHTML = `$${num}`;
-    uniqueId++;
 
     setTimeout(() => {
       item.classList.remove("animation");
@@ -20,7 +20,7 @@ gridItems.forEach((item) => {
 
     ul.insertAdjacentHTML(
       "beforeend",
-      `<li value="${uniqueId}" class="footer-items">
+      `<li class="footer-items">
       <button class="remove-item">X</button>
       <div class="side-by-side">     
       ${
@@ -34,7 +34,11 @@ gridItems.forEach((item) => {
 
     document.querySelectorAll(".remove-item").forEach((item) => {
       item.addEventListener("click", function () {
-        item.parentNode.remove();
+        item.parentNode.classList.add("remove-animation");
+
+        setTimeout(() => {
+          item.parentNode.remove();
+        }, 1000);
       });
     });
   });
