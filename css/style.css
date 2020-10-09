@@ -10,6 +10,7 @@
 
   51% {
     transform: translateY(-5rem);
+    opacity: 0;
   }
 
   100% {
@@ -116,6 +117,7 @@ body {
   border-radius: 24px;
   position: relative;
   cursor: pointer;
+  margin-left: auto;
 }
 
 .price {
@@ -232,12 +234,16 @@ body {
   position: fixed;
   bottom: 0;
   padding: 1rem;
-  animation: slide-up;
-  animation-duration: 2s;
-  visibility: hidden;
-  opacity: 0;
+  transition: 0.2s linear;
   display: flex;
   overflow-x: scroll;
+  visibility: hidden;
+  animation: slide-up;
+  animation-duration: 1s;
+}
+
+.slide-up-animation {
+  visibility: visible;
 }
 
 .bg-fixed {
@@ -281,7 +287,7 @@ body {
   font-size: 1.5rem;
   position: relative;
   animation: fade-in;
-  animation-duration: 2s;
+  animation-duration: 1s;
   display: flex;
   flex-shrink: 0;
 }
@@ -331,12 +337,7 @@ body {
 
 @keyframes slide-up {
   0% {
-    transform: translateY(10rem);
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.5;
+    transform: translateY(100%);
   }
 
   100% {
