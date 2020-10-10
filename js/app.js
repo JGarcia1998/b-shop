@@ -1,51 +1,59 @@
-let gridItems = document.querySelectorAll(".grid-item");
-let ul = document.querySelector(".footer-container");
-let num = 0;
+document
+  .querySelectorAll(".plus")
+  .forEach((item) => item.addEventListener("click", () => addToCart()));
 
-gridItems.forEach((item1) => {
-  const button = item1.querySelector(".add-btn");
+document
+  .querySelector(".footer-container")
+  .addEventListener("click", () => deleteCartItem());
 
-  button.addEventListener("click", () => {
-    num++;
-    if (num > 0) {
-      ul.classList.add("slide-up-animation");
-      ul.style.bottom = 0 + "px";
-    }
-    item1.classList.add("animation");
+function addToCart() {
+  let ul = document.querySelector(".footer-container");
+  let parent = event.target.parentNode.parentNode.cloneNode("true");
+  let elementAnimation = event.target.parentNode.parentNode;
+
+  parent.querySelector(".item-price").classList = "cart-price";
+  parent.querySelector(".car-image").classList = "small-car-image";
+  parent.querySelector(".add-btn").classList = "remove-item";
+  parent.querySelector(".plus").innerHTML = "X";
+  parent.querySelector(".plus").classList = "new-plus";
+
+  ul.classList.add("slide-up-animation");
+  elementAnimation.classList.add("animation");
+
+  parent.classList = "footer-items";
+  parent.removeAttribute("style");
+
+  document.querySelector(".footer-container").style.bottom = 0;
+  document.querySelector(".footer-container").style.visibility = "visible";
+  ul.appendChild(parent);
+  updateCartsPrice();
+
+  setTimeout(() => {
+    elementAnimation.classList.remove("animation");
+  }, 2000);
+}
+
+function deleteCartItem() {
+  if (event.target.classList == "new-plus") {
+    let mainElement = event.target.parentNode.parentNode;
+    mainElement.classList.add("remove-animation");
     setTimeout(() => {
-      item1.classList.remove("animation");
-    }, 5000);
+      mainElement.remove();
+      updateCartsPrice();
+    }, 900);
+  }
+}
 
-    ul.insertAdjacentHTML(
-      "beforeend",
-      `<li class="footer-items">
-      <button class="remove-item">X</button>
-      <div class="side-by-side">     
-      ${
-        item1.querySelector(".title").textContent
-      } <img class="cart-image" src="${item1
-        .querySelector(".bike-image")
-        .getAttribute("src")}"/></div> <span class="cart-price">${
-        item1.querySelector(".item-price").textContent
-      }</span> </li>`
+function updateCartsPrice() {
+  let cartPrice = 0;
+  document.querySelectorAll(".footer-items").forEach((item) => {
+    cartPrice += parseInt(
+      item.querySelector(".cart-price").getAttribute("value")
     );
-
-    // DELETE ITEM FROM CART
-
-    document.querySelectorAll(".remove-item").forEach((item) => {
-      item.addEventListener("click", function () {
-        num--;
-        if (num === 0) {
-          setTimeout(() => {
-            ul.style.bottom = -200 + "px";
-          }, 1000);
-        }
-        item.parentNode.classList.add("remove-animation");
-
-        setTimeout(() => {
-          item.parentNode.remove();
-        }, 900);
-      });
-    });
   });
-});
+  document.querySelector(".info").innerHTML = cartPrice;
+
+  if (cartPrice === 0) {
+    document.querySelector(".footer-container").style.bottom = -12 + "rem";
+  }
+}
