@@ -107,11 +107,11 @@ body {
   visibility: hidden;
 
   display: block;
-  width: 8rem;
-  height: 8rem;
+  width: 7rem;
+  height: 7rem;
   position: fixed;
-  right: 3rem;
-  top: 3rem;
+  right: 2rem;
+  top: 2rem;
   border-radius: 50%;
   z-index: 9999;
   text-align: center;
@@ -259,7 +259,10 @@ body {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(../img/bkgrnd-image.jpg);
   background-size: cover;
+
+  background-repeat: no-repeat;
   background-position: center;
+
   display: block;
 }
 
@@ -458,16 +461,44 @@ body {
 }
 
 .footer-container {
-  width: 100%;
+  width: 90%;
   height: 12rem;
   background-color: rgb(0, 0, 0);
   position: fixed;
   bottom: 0;
   padding: 1rem;
+
   transition: 1s;
   display: flex;
+  overflow: visible;
   overflow-x: scroll;
+
   visibility: hidden;
+}
+
+.checkbox-btn {
+  width: 10rem;
+  height: 3rem;
+  background-color: rgb(84, 233, 176);
+  position: fixed;
+  border-radius: 3px;
+  bottom: 11.5rem;
+  color: black;
+  font-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 5000;
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s;
+}
+
+.slide-footer {
+  display: none;
 }
 
 .slide-up-animation {
@@ -528,12 +559,13 @@ body {
   top: -0.5rem;
   right: -0.5rem;
   color: white;
-  background-color: rgb(136, 136, 136);
-  border: 1px solid rgb(136, 136, 136);
+  background-color: rgb(99, 97, 97);
+
   border-radius: 100%;
   cursor: pointer;
   transition: 0.5s;
   outline: none;
+  border: none;
 }
 
 .order-container {
@@ -547,6 +579,7 @@ body {
   border-radius: 4px;
   padding: 1rem;
   position: fixed;
+  bottom: 1.2rem;
   right: 1rem;
   z-index: 5000;
   color: white;
@@ -554,6 +587,17 @@ body {
   font-size: 1.5rem;
   align-items: center;
   justify-content: center;
+  transition: 1s;
+}
+
+.main-order-container {
+  height: 12rem;
+  width: 10%;
+  background-color: rgb(0, 0, 0);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  transition: 1s;
 }
 
 .price-cont {
@@ -564,11 +608,6 @@ body {
 .remove-animation {
   animation: remove;
   animation-duration: 1s;
-}
-
-.remove-item:hover {
-  background-color: white;
-  color: rgb(0, 173, 104);
 }
 
 .footer-header {
