@@ -173,7 +173,6 @@ body {
   transform: translate(-50%, -50%);
   list-style: none;
   text-align: center;
-  width: 100%;
 }
 
 .navigation__background {
@@ -197,7 +196,8 @@ body {
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 2px;
-  width: 10rem;
+  display: block;
+  width: 30rem;
   padding: 0.5rem 2.5rem;
   border-radius: 2px;
   transition: all 0.3s;
@@ -279,7 +279,7 @@ body {
   transition: 0.3s;
 }
 
-.category-control {
+.category {
   display: none;
 }
 
@@ -299,7 +299,7 @@ body {
   color: white;
 }
 
-.category-control:checked + .radio-control {
+.category:checked + .radio-control {
   color: white;
   background: black;
 }
